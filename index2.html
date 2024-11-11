@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me & Newsletter Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .form-container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+
+    <script>
+        // Function to modify the message before submitting the form
+        function addSmiley(event) {
+            // Get the message field from the form
+            const messageField = document.getElementsByName("message")[0];
+            
+            // Append a smiley face at the end of the message
+            messageField.value = messageField.value + " :)";
+            
+            // Allow the form to submit after modification
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+
+    <!-- Contact Form -->
+    <div class="form-container">
+        <h2>Contact Me</h2>
+        <form action="https://api.staticforms.xyz/submit" method="post">
+            <input type="hidden" name="accessKey" value="f838b19b-d05c-4811-ae59-8a2429920b9a">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <input type="hidden" name="replyTo" value="@">
+            <input type="submit" value="Send">
+        </form>
+    </div>
+
+    <!-- Newsletter Signup Form -->
+    <div class="form-container">
+        <h2>Subscribe to Our Newsletter</h2>
+        <form action="https://api.staticforms.xyz/submit" method="post" onsubmit="return addSmiley(event)">
+            <input type="hidden" name="accessKey" value="your-access-key-here">
+            <input type="text" name="name" placeholder="Your Name">
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Write a message (optional)"></textarea>
+            <input type="text" name="honeypot" style="display:none"> <!-- Spam protection -->
+            <input type="hidden" name="replyTo" value="@"> <!-- Set the replyTo to your email -->
+            <input type="hidden" name="redirectTo" value="https://example.com/thank-you"> <!-- Redirect after success -->
+            <input type="submit" value="Subscribe">
+        </form>
+    </div>
+
+</body>
+</html>
